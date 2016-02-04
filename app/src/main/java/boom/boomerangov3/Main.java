@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 public class Main extends AppCompatActivity {
 
@@ -17,9 +18,22 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    //to test
-    public void exampleTest() {
+    /*
+    Login Method
+     */
+    public void login(View view) {
+        int counter = 3;
+        counter--;
+        if(counter==0){
+            EditText username = (EditText) findViewById(R.id.user);
+            EditText password = (EditText) findViewById(R.id.pass);
 
-        int i =0;
+            if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
+                setContentView(R.layout.activity_logged_in);
+            } else {
+                //wrong password
+            }
+        }
+        //close app if counter is cicked out
     }
 }
