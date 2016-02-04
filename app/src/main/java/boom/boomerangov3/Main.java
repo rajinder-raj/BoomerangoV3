@@ -1,5 +1,6 @@
 package boom.boomerangov3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+
 
 public class Main extends AppCompatActivity {
 
@@ -29,7 +31,8 @@ public class Main extends AppCompatActivity {
             EditText password = (EditText) findViewById(R.id.pass);
 
             if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
-                setContentView(R.layout.activity_logged_in);
+                Intent i = new Intent(Main.this, LoggedIn.class);
+                startActivity(i);
             } else {
                 //wrong password
             }
