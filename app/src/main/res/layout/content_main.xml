@@ -4,71 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:longClickable="true"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="boom.boomerangov3.Main"
-    tools:showIn="@layout/activity_main"
-    android:background="@drawable/sunset"
-    android:longClickable="true">
+    tools:showIn="@layout/activity_main">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/imageView"
-        android:src="@drawable/logo"
-        android:layout_marginBottom="89dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="89dp"
+        android:src="@drawable/logo"
+        tools:ignore="contentDescription" />
 
     <EditText
+        android:id="@+id/pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/pass"
         android:layout_above="@+id/imageView"
         android:layout_alignStart="@+id/imageView"
-        android:layout_marginBottom="135dp" />
+        android:layout_marginBottom="135dp"
+        android:ems="10"
+        android:inputType="textPassword" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
         android:id="@+id/user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/pass"
-        android:layout_alignLeft="@+id/imageView" />
+        android:layout_alignStart="@+id/imageView"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="User Email"
         android:id="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignBottom="@+id/user" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Password"
+        android:layout_alignBottom="@+id/user"
+        android:layout_alignParentStart="true"
+        android:layout_alignStart="@+id/imageView"
+        android:text="@string/email"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
         android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/pass"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:text="@string/password"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
+        android:id="@+id/log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/log"
-        android:layout_centerVertical="true"
         android:layout_alignEnd="@+id/imageView"
-        android:onClick="login" />
+        android:layout_centerVertical="true"
+        android:onClick="login"
+        android:text="@string/login" />
 
-    /
+
 </RelativeLayout>

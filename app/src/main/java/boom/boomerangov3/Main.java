@@ -2,13 +2,8 @@ package boom.boomerangov3;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.EditText;
 
 
@@ -17,7 +12,23 @@ public class Main extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.splash);
+        Thread loadingTimer = new Thread(){
+            public void run(){
+                try{
+                    sleep(5000);
+                    Intent splashIntent = new Intent("boom.boomerangov3.SPLASH");
+                    startActivity(splashIntent);
+                }catch(InterruptedException e){
+                    e.printStackTrace();
+                }
+
+                finally {
+                    finish();
+                }
+            }
+        };
+        loadingTimer.start();
     }
 
     /*
