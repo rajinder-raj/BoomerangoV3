@@ -7,6 +7,6 @@ public class Splash extends Activity {
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_main);
+        //TODO:setContentView(R.layout.content_main);
     }
 }

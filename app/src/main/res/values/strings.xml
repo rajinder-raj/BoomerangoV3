@@ -10,4 +10,6 @@
     <string name="title_activity_logged_in">LoggedIn</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>
