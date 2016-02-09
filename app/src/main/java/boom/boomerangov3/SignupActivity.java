@@ -140,6 +140,11 @@ public class SignupActivity extends AppCompatActivity {
                     System.out.println("Database connection error");
                 }
             });
+            /* TODO: Fix create a userProfile object at time of new account create
+            Firebase newUser = fbdb.child("users").child(_emailText.getText().toString());
+            UserProfile x = new UserProfile(_emailText.getText().toString(), _nameText.getText().toString());
+            newUser.setValue(x);
+            */
         }
 
         return valid;

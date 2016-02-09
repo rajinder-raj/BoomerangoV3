@@ -1,6 +1,8 @@
 package boom.boomerangov3;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
     boolean valid2 = false;
+    public String USER = "Default";
 
     private Firebase fbdb; //firebase database reference
 
@@ -98,9 +101,9 @@ public class LoginActivity extends AppCompatActivity {
         if (requestCode == REQUEST_SIGNUP) {
             if (resultCode == RESULT_OK) {
 
-                // TODO: Implement successful signup logic here
                 // By default we just finish the Activity and log them in automatically
-                this.finish();
+                //this.finish();
+                //After sign up they should still login - RAJ
             }
         }
     }
@@ -143,6 +146,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         fbdb.authWithPassword(email, password, new Firebase.AuthResultHandler() {
+
             @Override
             public void onAuthenticated(AuthData authData) {
                 valid2 = true;
@@ -154,6 +158,13 @@ public class LoginActivity extends AppCompatActivity {
                 valid2 = false;
             }
         });
+
+        USER = email;
+
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("userEmail", USER);
+        editor.commit();
 
         valid = valid2;
         return valid;

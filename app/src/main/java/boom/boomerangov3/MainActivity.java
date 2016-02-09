@@ -1,10 +1,12 @@
 package boom.boomerangov3;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -14,9 +16,12 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //validates login
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+
+        //TODO:After login - currently working on
+        afterLogin();
     }
 
     @Override
@@ -39,6 +44,14 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void afterLogin() {
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        String savedPref = sharedPreferences.getString("user", "");
+
+        EditText feild = (EditText) findViewById(R.id.userFeild);
+        feild.setText(savedPref);
     }
 }
 
