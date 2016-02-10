@@ -13,4 +13,8 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_upload">Upload Files</string>
+
+    <!-- Upload Activity strings -->
+    <string name="upload_title">Share Your Photos!</string>
+    <string name="upload_button">Upload</string>
 </resources>
