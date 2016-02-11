@@ -21,6 +21,9 @@ import com.firebase.client.FirebaseError;
 import butterknife.ButterKnife;
 import butterknife.Bind;
 
+/*
+    Original code from http://sourcey.com/beautiful-android-login-and-signup-screens-with-material-design/
+ */
 public class LoginActivity extends AppCompatActivity {
     public static final String FIRE_URL = "https://boomerango.firebaseio.com";
     private static final String TAG = "LoginActivity";

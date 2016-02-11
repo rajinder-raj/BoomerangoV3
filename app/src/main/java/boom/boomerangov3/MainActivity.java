@@ -8,7 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-
+/*
+    Original code from http://sourcey.com/beautiful-android-login-and-signup-screens-with-material-design/
+ */
 public class MainActivity extends ActionBarActivity {
 
     @Override
