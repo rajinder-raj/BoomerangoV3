@@ -16,12 +16,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.firebase.client.Firebase;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class Upload extends AppCompatActivity implements View.OnClickListener{
+    private Firebase fbdb;
+
     private static final int RESULT_LOAD_IMAGE = 1;
     ImageView imageToUpload, downloadImage;
     Button bUploadImage, bDownloadImage;
@@ -33,6 +38,10 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
+
+        // Firebase initial setup
+        Firebase.setAndroidContext(this);
+        fbdb = new Firebase("https://boomerango.firebaseio.com/images");
 
         // Get the images
         imageToUpload = (ImageView) findViewById(R.id.imageToUpload);
@@ -62,6 +71,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
                 break;
             case R.id.bUploadImage:
                 Bitmap image = ((BitmapDrawable) imageToUpload.getDrawable()).getBitmap();
+                new UploadImage(image, uploadImageName.getText().toString()).execute();
                 break;
             case R.id.bDownloadImage:
 
@@ -79,11 +89,12 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
+    // nested class
     private class UploadImage extends AsyncTask<Void, Void, Void> {
         Bitmap image;
         String name;
 
-        // Get the image
+        // Class to handle the image
         public UploadImage(Bitmap image, String name) {
             this.image = image;
             this.name = name;
@@ -92,12 +103,21 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
         // Take the image and serializes as a String in the background
         @Override
         protected Void doInBackground(Void... params) {
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(();
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
             String encodedImage = Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT);
 
+
+            Image newImg = new Image(100, encodedImage);
+
+
+            fbdb.push().setValue(newImg);
+            /*
             ArrayList<NameValuePair> dataToSend = new ArrayList<>();
-            dataToSend.add(new ))
+            dataToSend.add(new BasicNameValuePair("image", encodedImage));
+            dataToSend.add(new BuildNameValuePair("name", name));
+            */
+
 
             return null;
         }
@@ -105,6 +125,8 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+                Toast.makeText(getApplicationContext(), "Image Uploaded Successfully", Toast.LENGTH_SHORT);
+
         }
     }
 
