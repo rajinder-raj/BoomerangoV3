@@ -18,6 +18,9 @@ import java.util.Map;
 import butterknife.ButterKnife;
 import butterknife.Bind;
 
+/*
+    Original code from http://sourcey.com/beautiful-android-login-and-signup-screens-with-material-design/
+ */
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
     private Firebase fbdb;
@@ -140,6 +143,15 @@ public class SignupActivity extends AppCompatActivity {
                     System.out.println("Database connection error");
                 }
             });
+
+            fbdb = new Firebase("https://boomerango.firebaseio.com/users");
+            UserProfile userx = new UserProfile(email, name);
+
+            fbdb.push().setValue(userx);
+
+
+
+
             /* TODO: Fix create a userProfile object at time of new account create
             Firebase newUser = fbdb.child("users").child(_emailText.getText().toString());
             UserProfile x = new UserProfile(_emailText.getText().toString(), _nameText.getText().toString());
