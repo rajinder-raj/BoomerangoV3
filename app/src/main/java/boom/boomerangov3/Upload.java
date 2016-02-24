@@ -48,10 +48,9 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
         downloadImage = (ImageView) findViewById(R.id.downloadImage);
 
 
-        // Get the button
+        // Get image button
         bUploadImage = (Button) findViewById(R.id.bUploadImage);
         bDownloadImage = (Button) findViewById(R.id.bDownloadImage);
-
 
         // Get the image name
         uploadImageName = (EditText) findViewById(R.id.etUploadName);
@@ -107,8 +106,8 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
             image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
             String encodedImage = Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT);
 
-
-            Image newImg = new Image(100, encodedImage);
+            // todo add username for image uid
+            Image newImg = new Image("username", encodedImage);
 
 
             fbdb.push().setValue(newImg);

@@ -26,6 +26,8 @@
         android:id="@+id/button"
         android:layout_below="@+id/userFeild"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="78dp" />
+        android:layout_marginTop="78dp"
+        android:contextClickable="false"
+        android:onClick="uploadAct"/>
 
 </RelativeLayout>

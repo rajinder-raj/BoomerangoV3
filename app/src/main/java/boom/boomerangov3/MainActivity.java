@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 
 /*
     Original code from http://sourcey.com/beautiful-android-login-and-signup-screens-with-material-design/
  */
 public class MainActivity extends ActionBarActivity {
+    private String EMAIL = "default";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,13 +21,35 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
 
-        //validates login
+        //validates login - raju s.
         Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+        int requestCode = 1; // Or some number you choose
+        startActivityForResult(intent, requestCode);
 
 
         //TODO:After login - currently working on
         afterLogin();
+    }
+
+    // Switch context to the Upload activity
+    public void uploadAct(View view) {
+        Intent intent = new Intent(this, Upload.class);
+    }
+
+    /*
+        Author: raju s.
+    */
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //TODO; Part 2
+        if (requestCode == 1)
+            if (data != null) {
+                String email = data.getStringExtra("UserLoginEmail");
+                EMAIL = email;
+            }
+        else {
+                EMAIL = "failed";
+            }
     }
 
     public void runSplash()
@@ -57,11 +81,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void afterLogin() {
-        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
-        String savedPref = sharedPreferences.getString("user", "");
 
         EditText feild = (EditText) findViewById(R.id.userFeild);
-        feild.setText(savedPref);
+        feild.setText(EMAIL);
     }
 }
 
