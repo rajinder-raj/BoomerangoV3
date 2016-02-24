@@ -1,9 +1,8 @@
 package boom.boomerangov3;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -11,7 +10,7 @@ import android.widget.EditText;
 /*
     Original code from http://sourcey.com/beautiful-android-login-and-signup-screens-with-material-design/
  */
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
     private String EMAIL = "default";
 
     @Override
@@ -68,6 +67,8 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            item.setIntent(new Intent(this, SettingsActivity.class));
+            startActivity(item.getIntent());
             return true;
         }
 
