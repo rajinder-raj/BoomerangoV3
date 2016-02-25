@@ -1,0 +1,29 @@
+Error Message after First Press:
+02-25 11:48:41.938 8469-8469/boom.boomerangov3 D/LoginActivity: Login
+02-25 11:48:41.968 8469-28642/boom.boomerangov3 I/APACHE HTTP (thCr=111797) - NafHttpAuthStrategyDefault: (thUse=111797) NafHttpAuthStrategyDefault()
+02-25 11:48:41.968 8469-8469/boom.boomerangov3 D/Toast:  checkMirrorLinkEnabled returns : false
+02-25 11:48:41.968 8469-8469/boom.boomerangov3 D/Toast: showing allowed
+02-25 11:48:41.978 8469-28642/boom.boomerangov3 I/APACHE HTTP (thCr=111797) - NafHttpAuthStrategyDefault: (thUse=111797)    The current context is NOT a context of GBA service.
+02-25 11:48:41.978 8469-28642/boom.boomerangov3 I/APACHE HTTP (thCr=111797) - GbaSupportPermissionRequestCheckerImpl: (thUse=111797) isCurrentProcessRequestedGba()#finished   result=false
+02-25 11:48:41.978 8469-28642/boom.boomerangov3 I/APACHE HTTP (thCr=111797) - GbaSupportPermissionRequestCheckerImpl: (thUse=111797) isCurrentProcessAllowedToUseGba()#started   result=false
+02-25 11:48:41.978 8469-28642/boom.boomerangov3 I/APACHE HTTP (thCr=111797) - NafHttpAuthStrategyDefault: (thUse=111797)    The GBA permission wasn't requested for this process.
+02-25 11:48:41.978 8469-28642/boom.boomerangov3 I/APACHE HTTP (thCr=111797) - NafHttpAuthStrategyDefault: (thUse=111797) It is impossible to support GBA now (many possible reasons: no Android Context, current client is GBA service, etc.), then it will be just usual HTTP.
+02-25 11:48:41.978 8469-28642/boom.boomerangov3 I/APACHE HTTP (thCr=111797) - NafRequestExecutorWrapperRedirectionHandler: (thUse=111797)    It isn't GBA flow, redirection responses are not handled.
+
+Successful Login after Second press:
+02-25 11:49:07.063 8469-8469/boom.boomerangov3 D/LoginActivity: Login
+02-25 11:49:07.063 8469-29008/boom.boomerangov3 I/APACHE HTTP (thCr=111799) - NafHttpAuthStrategyDefault: (thUse=111799) NafHttpAuthStrategyDefault()
+02-25 11:49:07.073 8469-29008/boom.boomerangov3 I/APACHE HTTP (thCr=111799) - NafHttpAuthStrategyDefault: (thUse=111799)    The current context is NOT a context of GBA service.
+02-25 11:49:07.073 8469-29008/boom.boomerangov3 I/APACHE HTTP (thCr=111799) - GbaSupportPermissionRequestCheckerImpl: (thUse=111799) isCurrentProcessRequestedGba()#finished   result=false
+02-25 11:49:07.073 8469-29008/boom.boomerangov3 I/APACHE HTTP (thCr=111799) - GbaSupportPermissionRequestCheckerImpl: (thUse=111799) isCurrentProcessAllowedToUseGba()#started   result=false
+02-25 11:49:07.073 8469-29008/boom.boomerangov3 I/APACHE HTTP (thCr=111799) - NafHttpAuthStrategyDefault: (thUse=111799)    The GBA permission wasn't requested for this process.
+02-25 11:49:07.073 8469-29008/boom.boomerangov3 I/APACHE HTTP (thCr=111799) - NafHttpAuthStrategyDefault: (thUse=111799) It is impossible to support GBA now (many possible reasons: no Android Context, current client is GBA service, etc.), then it will be just usual HTTP.
+02-25 11:49:07.073 8469-29008/boom.boomerangov3 I/APACHE HTTP (thCr=111799) - NafRequestExecutorWrapperRedirectionHandler: (thUse=111799)    It isn't GBA flow, redirection responses are not handled.
+02-25 11:49:07.083 8469-8469/boom.boomerangov3 D/Dialog:  checkMirrorLinkEnabled returns : false
+02-25 11:49:07.083 8469-8469/boom.boomerangov3 D/Dialog: showing allowed
+02-25 11:49:07.173 8469-8469/boom.boomerangov3 D/ProgressBar: updateDrawableBounds: left = 0
+02-25 11:49:07.173 8469-8469/boom.boomerangov3 D/ProgressBar: updateDrawableBounds: top = 0
+02-25 11:49:07.173 8469-8469/boom.boomerangov3 D/ProgressBar: updateDrawableBounds: right = 144
+02-25 11:49:07.173 8469-8469/boom.boomerangov3 D/ProgressBar: updateDrawableBounds: bottom = 144
+02-25 11:49:10.256 8469-8469/boom.boomerangov3 E/ViewRootImpl: sendUserActionEvent() mView == null
+02-25 11:49:10.256 8469-8469/boom.boomerangov3 D/Activity: #1 setTransGradationModeColor false
