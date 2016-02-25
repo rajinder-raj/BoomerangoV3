@@ -25,14 +25,11 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class Upload extends AppCompatActivity implements View.OnClickListener{
-    private Firebase fbdb;
-
     private static final int RESULT_LOAD_IMAGE = 1;
-    ImageView imageToUpload, downloadImage;
+    private Firebase fbdb;
+    ImageView imageToUpload, downloadImage; // holds the bitmap image
     Button bUploadImage, bDownloadImage;
     EditText uploadImageName, downloadImageName;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +44,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
         imageToUpload = (ImageView) findViewById(R.id.imageToUpload);
         downloadImage = (ImageView) findViewById(R.id.downloadImage);
 
-
-        // Get image button
+        // Get buttons
         bUploadImage = (Button) findViewById(R.id.bUploadImage);
         bDownloadImage = (Button) findViewById(R.id.bDownloadImage);
 
@@ -56,13 +52,16 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
         uploadImageName = (EditText) findViewById(R.id.etUploadName);
         downloadImageName = (EditText) findViewById(R.id.etDownloadName);
 
+        // set the listeners fo rthe buttons
         imageToUpload.setOnClickListener(this);
         bUploadImage.setOnClickListener(this);
         bDownloadImage.setOnClickListener(this);
     }
 
+    // Determines what to activate when something is clicked
     @Override
     public void onClick(View v) {
+        // switch statement that choses
         switch(v.getId()) {
             case R.id.imageToUpload:
                 Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -88,7 +87,10 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
-    // nested class
+    /*
+        Uploads the image on the background to avoid the main application from
+        hanging. Note a nested class to pass the behaviour
+     */
     private class UploadImage extends AsyncTask<Void, Void, Void> {
         Bitmap image;
         String name;
@@ -99,7 +101,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
             this.name = name;
         }
 
-        // Take the image and serializes as a String in the background
+        // Take the image and serializes it as a String in the background
         @Override
         protected Void doInBackground(Void... params) {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -109,7 +111,6 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
             // todo add username for image uid
             Image newImg = new Image("username", encodedImage);
 
-
             fbdb.push().setValue(newImg);
             /*
             ArrayList<NameValuePair> dataToSend = new ArrayList<>();
@@ -117,14 +118,13 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
             dataToSend.add(new BuildNameValuePair("name", name));
             */
 
-
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-                Toast.makeText(getApplicationContext(), "Image Uploaded Successfully", Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
 
         }
     }

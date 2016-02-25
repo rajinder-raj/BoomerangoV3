@@ -39,7 +39,7 @@
                                                                      at android.support.v4.app.FragmentActivity.startActivityForResult(FragmentActivity.java:784)
                                                                      at android.app.Activity.startActivity(Activity.java:3831)
                                                                      at android.app.Activity.startActivity(Activity.java:3799)
-                                                                     at boom.boomerangov3.MainActivity.uploadAct(MainActivity.java:40)
+                                                                     at onClickUpload(MainActivity.java:40)
                                                                      at java.lang.reflect.Method.invokeNative(Native Method) 
                                                                      at java.lang.reflect.Method.invoke(Method.java:515) 
                                                                      at android.support.v7.app.AppCompatViewInflater$DeclaredOnClickListener.onClick(AppCompatViewInflater.java:270) 

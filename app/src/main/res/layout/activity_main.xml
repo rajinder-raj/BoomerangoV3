@@ -28,6 +28,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="78dp"
         android:contextClickable="false"
-        android:onClick="uploadAct"/>
+        android:onClick="onClickUpload"/>
 
 </RelativeLayout>

@@ -29,7 +29,7 @@ public class Image {
 
     // Add a like/dislike of the image
     public void addLikeDislike(String email, boolean like) {
-        if (didLikeDisliked()) {
+        if (this.didLikeDisliked(email)) {
             LikeDislike newLikeDislike = new LikeDislike(email, like);
             likesDislikes.add(newLikeDislike);
         }
@@ -37,6 +37,7 @@ public class Image {
     }
 
     // Find if the user's like/disliked the image
+    // todo fix this
     public boolean didLikeDisliked(String email) {
         for (LikeDislike eachLike: likesDislikes) {
             if (eachLike.getEmail().equals(email))

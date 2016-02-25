@@ -31,24 +31,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-        Author: raju s.
-    */
-    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        //TODO; Part 2
-        if (requestCode == 1)
-            if (data != null) {
-                String email = data.getStringExtra("UserLoginEmail");
-                EMAIL = email;
-            }
-        else {
-                EMAIL = "failed";
-            }
-    }
-
-    // Switch context to the Upload activity
-    public void uploadAct(View view) {
-        Intent intent = new Intent(this, Upload.class);
+        Added by: John L.
+        Switch context to the Upload activity
+        TODO fix issue of switching context to upload
+     */
+    public void onClickUpload(View view) {
+        Intent myIntent = new Intent(MainActivity.this, Upload.class);
+        startActivity(myIntent);
     }
 
     /*
