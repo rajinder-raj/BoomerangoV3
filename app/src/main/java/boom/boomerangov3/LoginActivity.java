@@ -119,6 +119,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
+    //TODO: Part 1
+        Intent intent = new Intent();
+        intent.putExtra("UserLoginEmail", USER);
+        setResult(RESULT_OK, intent);
+
         finish();
     }
 
@@ -163,11 +168,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         USER = email;
-
-        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("userEmail", USER);
-        editor.commit();
 
         valid = valid2;
         return valid;

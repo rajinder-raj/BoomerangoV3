@@ -1,9 +1,8 @@
 package boom.boomerangov3;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +11,7 @@ import android.widget.EditText;
 /*
     Original code from http://sourcey.com/beautiful-android-login-and-signup-screens-with-material-design/
  */
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
     private String EMAIL = "default";
 
     @Override
@@ -29,6 +28,22 @@ public class MainActivity extends ActionBarActivity {
 
         //TODO:After login - currently working on
         afterLogin();
+    }
+
+    /*
+        Author: raju s.
+    */
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //TODO; Part 2
+        if (requestCode == 1)
+            if (data != null) {
+                String email = data.getStringExtra("UserLoginEmail");
+                EMAIL = email;
+            }
+        else {
+                EMAIL = "failed";
+            }
     }
 
     // Switch context to the Upload activity
@@ -74,6 +89,8 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            item.setIntent(new Intent(this, SettingsActivity.class));
+            startActivity(item.getIntent());
             return true;
         }
 
