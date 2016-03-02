@@ -1,0 +1,47 @@
+03-02 01:21:49.015 19789-19789/boom.boomerangov3 D/AndroidRuntime: Shutting down VM
+03-02 01:21:49.015 19789-19789/boom.boomerangov3 W/dalvikvm: threadid=1: thread exiting with uncaught exception (group=0x417edda0)
+03-02 01:21:49.045 19789-19789/boom.boomerangov3 E/AndroidRuntime: FATAL EXCEPTION: main
+                                                                   Process: boom.boomerangov3, PID: 19789
+                                                                   com.firebase.client.FirebaseException: Failed to bounce to type
+                                                                       at com.firebase.client.DataSnapshot.getValue(DataSnapshot.java:185)
+                                                                       at boom.boomerangov3.Upload$DownloadImage$1.onDataChange(Upload.java:124)
+                                                                       at com.firebase.client.core.ValueEventRegistration.fireEvent(ValueEventRegistration.java:53)
+                                                                       at com.firebase.client.core.view.DataEvent.fire(DataEvent.java:45)
+                                                                       at com.firebase.client.core.view.EventRaiser$1.run(EventRaiser.java:38)
+                                                                       at android.os.Handler.handleCallback(Handler.java:733)
+                                                                       at android.os.Handler.dispatchMessage(Handler.java:95)
+                                                                       at android.os.Looper.loop(Looper.java:146)
+                                                                       at android.app.ActivityThread.main(ActivityThread.java:5635)
+                                                                       at java.lang.reflect.Method.invokeNative(Native Method)
+                                                                       at java.lang.reflect.Method.invoke(Method.java:515)
+                                                                       at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1291)
+                                                                       at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1107)
+                                                                       at dalvik.system.NativeStart.main(Native Method)
+                                                                    Caused by: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "likes" (class boom.boomerangov3.Image), not marked as ignorable (3 known properties: , "image_serialized", "likesDislikes", "username"])
+                                                                       at [Source: java.io.StringReader@42cfd640; line: 1, column: 29] (through reference chain: boom.boomerangov3.Image["likes"])
+                                                                       at com.fasterxml.jackson.databind.DeserializationContext.reportUnknownProperty(DeserializationContext.java:555)
+                                                                       at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:708)
+                                                                       at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1160)
+                                                                       at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:315)
+                                                                       at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:121)
+                                                                       at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:2888)
+                                                                       at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:2034)
+                                                                       at com.firebase.client.DataSnapshot.getValue(DataSnapshot.java:183)
+                                                                       at boom.boomerangov3.Upload$DownloadImage$1.onDataChange(Upload.java:124) 
+                                                                       at com.firebase.client.core.ValueEventRegistration.fireEvent(ValueEventRegistration.java:53) 
+                                                                       at com.firebase.client.core.view.DataEvent.fire(DataEvent.java:45) 
+                                                                       at com.firebase.client.core.view.EventRaiser$1.run(EventRaiser.java:38) 
+                                                                       at android.os.Handler.handleCallback(Handler.java:733) 
+                                                                       at android.os.Handler.dispatchMessage(Handler.java:95) 
+                                                                       at android.os.Looper.loop(Looper.java:146) 
+                                                                       at android.app.ActivityThread.main(ActivityThread.java:5635) 
+                                                                       at java.lang.reflect.Method.invokeNative(Native Method) 
+                                                                       at java.lang.reflect.Method.invoke(Method.java:515) 
+                                                                       at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:1291) 
+                                                                       at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1107) 
+                                                                       at dalvik.system.NativeStart.main(Native Method) 
+03-02 01:21:49.275 7009-7682/? W/ActivityManager:   Force finishing activity boom.boomerangov3/.Upload
+03-02 01:21:49.285 7009-7385/? V/SmartFaceService - 3rd party pause: onReceive [android.intent.action.ACTIVITY_STATE/boom.boomerangov3/pause]
+03-02 01:21:49.365 7009-7009/? D/CrashAnrDetector: processName: boom.boomerangov3
+03-02 01:21:49.365 7009-7009/? D/CrashAnrDetector: broadcastEvent : boom.boomerangov3 data_app_crash
+03-02 01:21:49.806 7009-7385/? V/SmartFaceService - 3rd party pause: onReceive [android.intent.action.ACTIVITY_STATE/boom.boomerangov3/resume]

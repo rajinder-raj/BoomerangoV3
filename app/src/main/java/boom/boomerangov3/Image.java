@@ -14,6 +14,7 @@ import java.io.ByteArrayOutputStream;
  * Created by jparsee(john) on 17/02/16.
  */
 public class Image {
+
     private String image_serialized = null;
     private String username = null;
     private ArrayList<LikeDislike> likesDislikes = new ArrayList<LikeDislike>();
@@ -35,7 +36,6 @@ public class Image {
         return username;
     }
 
-
     public ArrayList<LikeDislike> getLikesDislikes() {
         return likesDislikes;
     }
@@ -48,7 +48,7 @@ public class Image {
     public String serializeBitmap(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(); // TODO - comment here
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream); // reduce the size of the image to a jpeg
-        return Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT); // encodes it in a string
+       return Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT); // encodes it in a string
     }
 
     /**
@@ -56,7 +56,7 @@ public class Image {
      * TODO - test if encoding is correct
      * @return - normal bitmap, compressed
      */
-    public Bitmap getBitmap() {
+    public Bitmap convertBitmap() {
         byte[] bitmapByteArray = Base64.decode(image_serialized, Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapByteArray, 0, bitmapByteArray.length);
         return bitmap;

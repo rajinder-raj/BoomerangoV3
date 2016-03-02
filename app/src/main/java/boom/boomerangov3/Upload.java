@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -25,6 +26,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
     ImageView imageToUpload, downloadImage; // holds the bitmap image
     Button bUploadImage, bDownloadImage;
     EditText uploadImageName, downloadImageName;
+    @JsonIgnoreProperties(ignoreUnknown=true)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
