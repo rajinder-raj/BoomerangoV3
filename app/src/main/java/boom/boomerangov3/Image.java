@@ -35,6 +35,11 @@ public class Image {
         return username;
     }
 
+
+    public ArrayList<LikeDislike> getLikesDislikes() {
+        return likesDislikes;
+    }
+
     /**
      * Take a bitmap image, compress and serializes it
      * @param bitmap - bitmap image

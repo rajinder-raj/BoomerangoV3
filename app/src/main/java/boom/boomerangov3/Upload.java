@@ -33,7 +33,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
 
         // Firebase initial setup
         Firebase.setAndroidContext(this);
-        fbdb = new Firebase("https://boomerango.firebaseio.com/images");
+        fbdb = new Firebase("https://boomerango.firebaseio.com/imagesV2");
 
         // set buttons and listeners
         imageToUpload = (ImageView) findViewById(R.id.imageToUpload);
@@ -182,7 +182,7 @@ public class Upload extends AppCompatActivity implements View.OnClickListener{
          */
         @Override
         protected Void doInBackground(Void... params) {
-            Image newImg = new Image("username", image);
+            Image newImg = new Image(name, image);// todo -
             fbdb.push().setValue(newImg); // add the the metadata and serialized image to the database
             return null;
         }
