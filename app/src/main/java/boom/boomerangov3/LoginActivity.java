@@ -135,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
-        Toast.makeText(getBaseContext(), "Login Worked you fucker", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Logged in successful", Toast.LENGTH_LONG).show();
     //TODO: to work on intent
         Intent intent = new Intent();
         intent.putExtra("UserLoginEmail", USER);
