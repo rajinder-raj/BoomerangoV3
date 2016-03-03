@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        //Firebase soccket
+        //Firebase socket
         Firebase.setAndroidContext(this);
         fbdb = new Firebase(FIRE_URL);
 
@@ -82,20 +82,36 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
 
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
+
+        fbdb.authWithPassword(_emailText.getText().toString(), _passwordText.getText().toString(), new Firebase.AuthResultHandler() {
+
+            @Override
+            public void onAuthenticated(AuthData authData) {
+                //valid2 = true;
+                onLoginSuccess();
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onAuthenticationError(FirebaseError firebaseError) {
+                //valid2 = false;
+                onLoginFailed();
+                progressDialog.cancel();
+            }
+        });
 
         // TODO: Implement your own authentication logic here.
-
+/*
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
+
                         // onLoginFailed();
-                        progressDialog.dismiss();
+                        //progressDialog.dismiss();
                     }
                 }, 3000);
+                */
     }
 
 
@@ -119,7 +135,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
-    //TODO: Part 1
+        Toast.makeText(getBaseContext(), "Login Worked you fucker", Toast.LENGTH_LONG).show();
+    //TODO: to work on intent
         Intent intent = new Intent();
         intent.putExtra("UserLoginEmail", USER);
         setResult(RESULT_OK, intent);
@@ -129,7 +146,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
         _loginButton.setEnabled(true);
     }
 
@@ -153,23 +169,6 @@ public class LoginActivity extends AppCompatActivity {
             _passwordText.setError(null);
         }
 
-        fbdb.authWithPassword(email, password, new Firebase.AuthResultHandler() {
-
-            @Override
-            public void onAuthenticated(AuthData authData) {
-                valid2 = true;
-                //System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
-            }
-
-            @Override
-            public void onAuthenticationError(FirebaseError firebaseError) {
-                valid2 = false;
-            }
-        });
-
-        USER = email;
-
-        valid = valid2;
         return valid;
     }
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TabHost;
 
 /*
     Original code from http://sourcey.com/beautiful-android-login-and-signup-screens-with-material-design/
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        createTabs();
 
         //validates login - raju s.
         Intent intent = new Intent(this, LoginActivity.class);
@@ -25,12 +27,11 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, requestCode);
 
 
-        //TODO:After login - currently working on
-        afterLogin();
     }
 
     /*
         Author: raju s.
+        this allows the activity log in to return the email from the user (not really working - March 2, 2016)
     */
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -45,10 +46,28 @@ public class MainActivity extends AppCompatActivity {
             }
     }
 
-    public void runSplash()
-    {
-
-
+    /*
+        author (Raj)
+        this class creates the tab names
+     */
+    private void createTabs() {
+        TabHost tabHost = (TabHost)findViewById(R.id.tabHost);
+        tabHost.setup();
+        //first tab
+        TabHost.TabSpec tabSpec = tabHost.newTabSpec("Global Pictures");
+        tabSpec.setContent(R.id.tab1);
+        tabSpec.setIndicator("Global Pictures");
+        tabHost.addTab(tabSpec);
+        //second tab
+        tabSpec = tabHost.newTabSpec("Favorite Pictures");
+        tabSpec.setContent(R.id.tab2);
+        tabSpec.setIndicator("Favorite Pictures");
+        tabHost.addTab(tabSpec);
+        //third tab
+        tabSpec = tabHost.newTabSpec("My Pictures");
+        tabSpec.setContent(R.id.tab3);
+        tabSpec.setIndicator("My Pictures");
+        tabHost.addTab(tabSpec);
     }
 
     @Override
@@ -73,12 +92,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void afterLogin() {
-
-        EditText feild = (EditText) findViewById(R.id.userFeild);
-        feild.setText(EMAIL);
     }
 }
 
